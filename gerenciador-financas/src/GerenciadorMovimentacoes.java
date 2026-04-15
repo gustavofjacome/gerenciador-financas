@@ -19,4 +19,28 @@ public class GerenciadorMovimentacoes {
             System.out.println(movimentacoes.get(i));
         }
     }
+
+    public double calcularTotalReceitas(){
+        double soma = 0.0;
+        for (int i = 0; i < movimentacoes.size(); i++) {
+            if (movimentacoes.get(i).getTipo() == TipoMovimentacao.RECEITA) {
+                soma += movimentacoes.get(i).getValor();
+            }
+        }
+        return soma;
+    }
+
+    public double calcularTotalDespesas(){
+        double soma = 0.0;
+        for (int i = 0; i < movimentacoes.size(); i++) {
+            if (movimentacoes.get(i).getTipo() == TipoMovimentacao.DESPESA) {
+                soma += movimentacoes.get(i).getValor();
+            }
+        }
+        return soma;
+    }
+
+    public double calcularSaldoFinal(){
+        return calcularTotalReceitas() - calcularTotalDespesas();
+    }
 }

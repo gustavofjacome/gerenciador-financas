@@ -56,6 +56,16 @@ public class SistemaCLI {
                     break;
 
                 case 3:
+
+                    System.out.println("Ver Resumo/Saldo");
+                    System.out.println("Receitas: R$" + transacoes.calcularTotalReceitas());
+                    System.out.println("Despesas: R$" + transacoes.calcularTotalDespesas());
+                    System.out.println("Saldo Final: R$" + transacoes.calcularSaldoFinal());
+                    break;
+
+
+                case 4:
+
                     System.out.println("Saindo do sistema...");
                     sc.close();
                     System.exit(0);
