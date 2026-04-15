@@ -5,6 +5,10 @@ public class GerenciadorMovimentacoes {
     private List<Movimentacao> movimentacoes = new ArrayList<>();
 
 
+    public List<Movimentacao> getTodasMovimentacoes() {
+        return movimentacoes;
+    }
+
     public void adicionarMovimentacao(Movimentacao m) {
         movimentacoes.add(m);
     }

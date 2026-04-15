@@ -73,8 +73,12 @@ public class SistemaCLI {
 
 
                 case 4:
+                    System.out.println("Salvando seus dados...");
 
-                    System.out.println("Saindo do sistema...");
+                    RepositorioArquivo repo = new RepositorioArquivo();
+                    repo.gerarExtrato(transacoes.getTodasMovimentacoes());
+
+                    System.out.println("Encerrando programa.");
                     sc.close();
                     System.exit(0);
 

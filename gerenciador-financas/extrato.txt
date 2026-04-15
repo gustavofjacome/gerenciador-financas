@@ -1,0 +1,2 @@
+1;salario;funcern;1000.0;2;5;2026;RECEITA
+2;passagem onibus;guanabara;150.0;2;5;2005;DESPESA
