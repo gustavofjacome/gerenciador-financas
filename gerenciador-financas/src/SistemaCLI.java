@@ -12,7 +12,8 @@ public class SistemaCLI {
             System.out.println("\n--- CONTROLE FINANCEIRO ---");
             System.out.println("1. Adicionar Movimentação");
             System.out.println("2. Listar Movimentações");
-            System.out.println("3. Sair");
+            System.out.println("3. Ver Resumo/Saldo");
+            System.out.println("4. Sair");
             System.out.print("Escolha uma opção: ");
 
             int opcao = sc.nextInt();
@@ -22,10 +23,22 @@ public class SistemaCLI {
                 case 1:
                     System.out.println("\n-- NOVA MOVIMENTAÇÃO --");
 
+                    System.out.print("Tipo (RECEITA ou DESPESA): ");
+                    TipoMovimentacao tipo = TipoMovimentacao.valueOf(sc.nextLine().toUpperCase());
+
+                    String origemDestino;
+                    if (tipo == TipoMovimentacao.DESPESA) {
+                        System.out.print("Onde você gastou? (ex: Mercado, Uber, Boleto): ");
+                        origemDestino = sc.nextLine();
+                    } else {
+                        System.out.print("De onde veio esse dinheiro? (ex: Salário, Cliente, Venda): ");
+                        origemDestino = sc.nextLine();
+                    }
+
                     System.out.print("Descrição: ");
                     String descricao = sc.nextLine();
 
-                    System.out.print("Valor: ");
+                    System.out.print("Valor: R$ ");
                     double valor = sc.nextDouble();
 
                     System.out.print("Dia: ");
@@ -38,12 +51,7 @@ public class SistemaCLI {
                     short ano = sc.nextShort();
                     sc.nextLine();
 
-                    System.out.print("Tipo (RECEITA ou DESPESA): ");
-
-                    TipoMovimentacao tipo = TipoMovimentacao.valueOf(sc.nextLine().toUpperCase());
-
-
-                    Movimentacao novaMov = new Movimentacao(contadorId, descricao, valor, dia, mes, ano, tipo);
+                    Movimentacao novaMov = new Movimentacao(contadorId, descricao, origemDestino, valor, dia, mes, ano, tipo);
                     transacoes.adicionarMovimentacao(novaMov);
 
                     System.out.println("Movimentação adicionada com sucesso!");
