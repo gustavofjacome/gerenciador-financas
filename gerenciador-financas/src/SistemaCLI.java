@@ -1,7 +1,31 @@
 import java.util.Scanner;
 
+/**
+ * Ponto de entrada e interface de linha de comando (CLI) do sistema de controle financeiro.
+ *
+ * <p>Exibe um menu interativo em loop com as opções:</p>
+ * <ol>
+ *   <li>Adicionar movimentação (receita ou despesa)</li>
+ *   <li>Listar todas as movimentações registradas</li>
+ *   <li>Visualizar resumo financeiro (receitas, despesas e saldo)</li>
+ *   <li>Encerrar o programa e exportar o extrato para arquivo</li>
+ * </ol>
+ *
+ * @see GerenciadorMovimentacoes
+ * @see RepositorioArquivo
+ * @see Movimentacao
+ */
 public class SistemaCLI {
 
+    /**
+     * Método principal que inicializa e executa o loop do sistema.
+     *
+     * <p>Instancia o {@link GerenciadorMovimentacoes}, exibe o menu continuamente
+     * e processa a opção escolhida. Ao selecionar a opção 4, gera o extrato via
+     * {@link RepositorioArquivo#gerarExtrato(java.util.List)} e encerra o processo.</p>
+     *
+     * @param args argumentos de linha de comando (não utilizados)
+     */
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         GerenciadorMovimentacoes transacoes = new GerenciadorMovimentacoes();
@@ -64,13 +88,11 @@ public class SistemaCLI {
                     break;
 
                 case 3:
-
                     System.out.println("Ver Resumo/Saldo");
                     System.out.println("Receitas: R$" + transacoes.calcularTotalReceitas());
                     System.out.println("Despesas: R$" + transacoes.calcularTotalDespesas());
                     System.out.println("Saldo Final: R$" + transacoes.calcularSaldoFinal());
                     break;
-
 
                 case 4:
                     System.out.println("Salvando seus dados...");
